@@ -6,7 +6,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/posts', function (Request $request) {
-    $posts = Post::all();
-    return view('posts.index', ['posts' => $posts]);
-});
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
