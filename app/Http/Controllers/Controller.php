@@ -13,6 +13,6 @@ class Controller extends BaseController
 
     public function show($id) {
         $post = Post::with('comments')->findOrFail($id);
-        return view('posts.show', ['post' => $post]);
+        return view('posts.show', compact('post'));
     }
 }
